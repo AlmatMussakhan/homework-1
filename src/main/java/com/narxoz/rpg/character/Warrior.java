@@ -1,20 +1,11 @@
 package com.narxoz.rpg.character;
 
+import com.narxoz.rpg.equipment.Weapon;
+import com.narxoz.rpg.equipment.Armor;
+
 /**
- * Example concrete implementation of a Character.
- *
- * This is provided as a reference to help you get started.
- * Study this implementation, then create similar classes for Mage, Archer, etc.
- *
- * Notice:
- * - How attributes are initialized
- * - How methods are implemented
- * - The structure you should follow for other character types
- *
- * TODO: Create similar implementations for:
- * - Mage (high mana/intelligence, low health/strength)
- * - Archer (balanced stats, ranged combat)
- * - (Optional) Additional classes: Rogue, Paladin, etc.
+ * Concrete implementation of a Character for the Warrior class.
+ * This class represents a "Concrete Product" in the Factory Method pattern.
  */
 public class Warrior implements Character {
 
@@ -24,9 +15,9 @@ public class Warrior implements Character {
     private int strength;
     private int intelligence;
 
-    // TODO: Add fields for equipped weapon and armor
-    // Think: Should Warrior know about its equipment?
-
+    // Fields for equipped items from the Abstract Factory
+    private Weapon weapon;
+    private Armor armor;
 
     public Warrior(String name) {
         this.name = name;
@@ -37,30 +28,54 @@ public class Warrior implements Character {
         this.intelligence = 20;
     }
 
-    // TODO: Implement methods from Character interface
-    // You need to define those methods in Character interface first!
-
-    // Example method structure:
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
+    public int getHealth() { return health; }
+
+    @Override
+    public int getMana() { return mana; }
+
+    @Override
+    public int getStrength() { return strength; }
+
+    @Override
+    public int getIntelligence() { return intelligence; }
+
+    @Override
+    public void useSpecialAbility() {
+        System.out.println(name + " uses BERSERKER RAGE! Strength temporarily increased!");
+    }
+
+    @Override
+    public void equipWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        System.out.println(name + " equipped: " + weapon.getName());
+    }
+
+    @Override
+    public void equipArmor(Armor armor) {
+        this.armor = armor;
+        System.out.println(name + " put on: " + armor.getName());
+    }
+
+    @Override
     public void displayStats() {
         System.out.println("=== " + name + " (Warrior) ===");
         System.out.println("Health: " + health);
         System.out.println("Mana: " + mana);
         System.out.println("Strength: " + strength);
         System.out.println("Intelligence: " + intelligence);
+        displayEquipment();
     }
 
-    public void useSpecialAbility() {
-        System.out.println(name + " uses BERSERKER RAGE! Strength temporarily increased!");
+    @Override
+    public void displayEquipment() {
+        System.out.println("Current Equipment:");
+        System.out.println("- Weapon: " + (weapon != null ? weapon.getWeaponInfo() : "None"));
+        System.out.println("- Armor: " + (armor != null ? armor.getArmorInfo() : "None"));
     }
-
-    // TODO: Add equipment-related methods
-    // Examples:
-    // - void equipWeapon(Weapon weapon)
-    // - void equipArmor(Armor armor)
-    // - void displayEquipment()
-
 }
