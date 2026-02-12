@@ -16,7 +16,6 @@ public interface Character {
     void useSpecialAbility();
     void displayStats();
 
-    // Equipment methods to support Abstract Factory items
     void equipWeapon(Weapon weapon);
     void equipArmor(Armor armor);
     void displayEquipment();

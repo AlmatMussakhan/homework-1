@@ -1,8 +1,6 @@
 package com.narxoz.rpg.equipment;
 
-/**
- * Concrete weapon implementation - Medieval theme.
- */
+
 public class IronSword implements Weapon {
 
     private String name;
