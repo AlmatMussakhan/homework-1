@@ -13,7 +13,6 @@ public class Main {
 
         System.out.println("=== RPG Character Creation System ===");
 
-        // 1. Character Creation via Console
         System.out.print("Enter your character's name: ");
         String name = scanner.nextLine();
 
@@ -27,7 +26,6 @@ public class Main {
             return;
         }
 
-        // 2. Equipment Selection via Console
         System.out.println("\nChoose an equipment theme:");
         System.out.println("1. Medieval (Sword & Plate)");
         System.out.println("2. Magic (Staff & Robes)");
@@ -50,10 +48,9 @@ public class Main {
                 break;
         }
 
-        // 3. Applying Patterns
+
         equipCharacter(userHero, selectedFactory);
 
-        // 4. Displaying Results
         System.out.println("\n--- Final Character Summary ---");
         displayCharacterInfo(userHero);
 
